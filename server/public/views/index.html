@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="toDoApp">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>To Do List</title>
+
+        <link href="/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/stylesheets/style.css">
+        <script src="/vendor/angular/angular.min.js" type="text/javascript"></script>
+        <script src="/assets/javascripts/app.min.js" type="text/javascript"></script>
+    </head>
+
+    <body ng-controller="MainController">
+
+        <div class="jumbotron">
+            <h1>SuperMongo List Genious2</h1>
+        </div>
+
+        <div class="lists">
+
+            <div class = "alist hiPriList col-md-4">
+                <h3>Hi Priority Tasks</h3>
+                <ul>
+                    <li ng-repeat="item in listArray[0] track by $index">
+                        <div class="one animate-show">
+                            <button class="btn btn-xs btn-primary btn-item" ng-click="delete0()">Delete</button>
+                            <button class="btn btn-xs btn-primary btn-item" ng-click="edit0()">Edit</button>
+                            {{item}}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class = "alist medPriList col-md-4">
+                <h3>Medium Priority Tasks</h3>
+                <ul>
+                    <li ng-repeat="item in listArray[1] track by $index">
+                        <div class="one">
+                            <button class="btn btn-xs btn-primary btn-delete" ng-click="delete1()">Delete</button>
+                            <button class="btn btn-xs btn-primary btn-item" ng-click="edit1()">Edit</button>
+                            {{item}}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class = "alist loPriList col-md-4">
+                <h3>Low Priority Tasks</h3>
+                <ul>
+                    <li ng-repeat="item in listArray[2] track by $index">
+                        <div class="one">
+                            <button class="btn btn-xs btn-primary btn-delete" ng-click="delete2()">Delete</button>
+                            <button class="btn btn-xs btn-primary btn-item" ng-click="edit2()">Edit</button>
+                            {{item}}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div> <!--lists-->
+
+
+        <div class="foot"> <!-- User Interface -->
+
+            <!-- Add a new item: Main Add button/input data field/priority selection/Done button -->
+            <input  ng-show="showNewItem" type="text" ng-model="newListItem" placeholder="enter a new item">
+            <button ng-init="count=0" class="btn btn-sm btn-primary" ng-show="showAddButton" ng-click="addAnItem()"> Add an item</button>
+            <p id="priLabel" ng-show="showNewItem">Select the Priority: </p>
+            <form>
+                <select ng-show="showNewItem" ng-model="priority">
+                    <option ng-selected="true" value="0" >High Priority</option>
+                    <option value="1">Medium Priority</option>
+                    <option value="2">Low Priority</option>
+                </select>
+            </form>
+            <button class="btn btn-sm btn-success done-btn" ng-show="showNewItem" ng-click="doneAdding()">Done</button>
+
+            <!-- Edit an item: data edit field/Done button -->
+            <input type="text" ng-show="showEditItem" ng-model="editListItem">
+            <button class="btn btn-sm btn-success done-btn" ng-show="showEditItem" ng-click="doneEditing()">Done Editing</button>
+
+        </div>
+
+    </body>
+
+</html>

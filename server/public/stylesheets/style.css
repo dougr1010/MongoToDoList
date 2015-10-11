@@ -1,0 +1,67 @@
+
+.jumbotron{
+    text-align: center;
+    background-color: #00ff00;
+    background: linear-gradient(to bottom, #ffffff,#00d000);
+    border-bottom: 1px solid black
+}
+
+.lists, .alist, .foot {
+    border: none; /*1px solid black;*/
+    margin: 5px;
+    padding: 5px;
+    width: 100%;
+}
+
+.lists {
+    height: 542px;
+}
+
+h3 {
+  text-align: center;
+    text-decoration: underline;
+}
+.alist {
+    height: 500px;
+    overflow: auto;
+    width: 30%;
+}
+
+.hiPriList {
+    background-color: #d3d3d3;
+    margin-left: 3%;
+}
+
+.medPriList {
+    background-color: #e3e3e3;
+}
+
+.loPriList {
+    background-color: #f3f3f3;
+}
+
+.foot {
+    background: #e0e0e0;
+    text-align: center;
+    clear: both;
+    height: 110px;
+}
+ul {
+    padding-left: 0;
+}
+
+.btn-item {
+    border-radius: 8px;
+}
+
+#priLabel {
+    margin:0;
+}
+
+.done-btn {
+    margin-top: 5px;
+}
+
+.one:hover {
+    background: linear-gradient(to bottom, #ffffff,#00d000);
+}
