@@ -1,7 +1,11 @@
 var express = require('express');
+var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
 
+app.set('views', path.join(__dirname, 'views'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 var mongoose = require('mongoose');
 var mongoURI = "mongodb://localhost:27017/toDo";
@@ -13,21 +17,11 @@ MongoDB.once('open', function () {
     console.log('mongodb connection open!');
 });
 
-
-var app = express();
-
-
 var routes = require('./routes/index');
 app.use('/', routes);
 
 var toDo = require('./routes/toDo');
 app.use('/toDo', toDo);
-
-
-
-app.set('views', path.join(__dirname, 'views'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 

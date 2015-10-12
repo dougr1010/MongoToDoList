@@ -24,9 +24,9 @@
                 <ul>
                     <li ng-repeat="item in listArray[0] track by $index">
                         <div class="one animate-show">
-                            <button class="btn btn-xs btn-primary btn-item" ng-click="delete0()">Delete</button>
-                            <button class="btn btn-xs btn-primary btn-item" ng-click="edit0()">Edit</button>
-                            {{item}}
+                            <button class="btn btn-xs btn-primary btn-item" ng-click="delete(0)">Delete</button>
+                            <button class="btn btn-xs btn-primary btn-item" ng-click="edit(0)">Edit</button>
+                            {{item[0]}}
                         </div>
                     </li>
                 </ul>
@@ -37,9 +37,9 @@
                 <ul>
                     <li ng-repeat="item in listArray[1] track by $index">
                         <div class="one">
-                            <button class="btn btn-xs btn-primary btn-delete" ng-click="delete1()">Delete</button>
-                            <button class="btn btn-xs btn-primary btn-item" ng-click="edit1()">Edit</button>
-                            {{item}}
+                            <button class="btn btn-xs btn-primary btn-delete" ng-click="delete(1)">Delete</button>
+                            <button class="btn btn-xs btn-primary btn-item" ng-click="edit(1)">Edit</button>
+                            {{item[0]}}
                         </div>
                     </li>
                 </ul>
@@ -50,9 +50,9 @@
                 <ul>
                     <li ng-repeat="item in listArray[2] track by $index">
                         <div class="one">
-                            <button class="btn btn-xs btn-primary btn-delete" ng-click="delete2()">Delete</button>
-                            <button class="btn btn-xs btn-primary btn-item" ng-click="edit2()">Edit</button>
-                            {{item}}
+                            <button class="btn btn-xs btn-primary btn-delete" ng-click="delete(2)">Delete</button>
+                            <button class="btn btn-xs btn-primary btn-item" ng-click="edit(2)">Edit</button>
+                            {{item[0]}}
                         </div>
                     </li>
                 </ul>
