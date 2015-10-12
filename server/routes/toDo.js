@@ -30,7 +30,7 @@ router.get('/getData', function(req, res, next) {
     })
 });
 
-
+//delete a document from the db
 router.post('/delete', function(request, response){
     var id=request.body.id;
     console.log('hit /toDo/remove endpoint');
@@ -41,6 +41,19 @@ router.post('/delete', function(request, response){
             if (err) throw err;
             response.sendStatus(200);
         })
+    })
+});
+
+//update the task in an existing document in the db
+router.post('/update', function(request, response){
+    var id=request.body.id;
+    var updatedTask = request.body.task;
+    console.log('hit /toDo/update endpoint');
+    console.log('id to update: ',id);
+    console.log('updated task: ', updatedTask);
+    ToDo.findByIdAndUpdate(id, {$set:{task:updatedTask}},function(err,toDo){
+        if(err) console.log(err);
+        //res.send(toDo);
     })
 });
 

@@ -32,7 +32,7 @@ app.controller("MainController", ['$scope','$http', function($scope, $http){
     }
 
     $scope.edit = function(fEditPriority){
-        console.log("saw edit0 button");
+        console.log("saw edit button");
         $scope.showAddButton=false;
         $scope.showEditItem=true;
         editThis = this;
@@ -43,6 +43,15 @@ app.controller("MainController", ['$scope','$http', function($scope, $http){
     $scope.doneEditing = function(){
         console.log('saw done editing button');
         $scope.listArray[editPriority][editThis.$index][0]=$scope.editListItem;
+        var jString = {};
+           console.log("initial jString: ",jString);
+        jString.id=$scope.listArray[editPriority][editThis.$index][1];
+           console.log($scope.listArray[editPriority][editThis.$index][1]);
+        jString.task=$scope.editListItem;
+           console.log($scope.editListItem);
+        console.log('info for update: ',jString);
+        $http({method:"POST", url:"/toDo/update", data:jString}).then(getData()).then(getData());
+
         $scope.showEditItem=false;
         $scope.showAddButton=true;
     }
@@ -50,7 +59,7 @@ app.controller("MainController", ['$scope','$http', function($scope, $http){
     $scope.delete = function(deletePriority){
         console.log("saw delete0 button");
         console.log('removing: ',this.item,"at index: ",this.$index);
-        id=$scope.listArray[deletePriority][this.$index][1]
+        id=$scope.listArray[deletePriority][this.$index][1];
         console.log('id: ',id);
         var jString = {};
            jString.id=id;
@@ -74,7 +83,7 @@ app.controller("MainController", ['$scope','$http', function($scope, $http){
         jString.task = $scope.newListItem;
         var txData=JSON.stringify(jString);
         console.log(txData);
-        //$http.post('/toDo/add', txData);
+
         $http({method:"POST", url:"/toDo/add", data:jString}).then(function(response){
             console.log('id: ',response.data);
             //refresh the list
@@ -87,14 +96,6 @@ app.controller("MainController", ['$scope','$http', function($scope, $http){
     }
     //-----------------------------
 
-    //Send Data utility function
-    //function sendData(){
-    //    console.log('raw listArray');
-    //    console.log($scope.listArray);
-    //    console.log('stringified');
-    //    console.log(JSON.stringify($scope.listArray));
-    //    $http.post('/sendToServer', $scope.listArray);
-    //}
 
     function getData(){
         console.log('getting data from db');
