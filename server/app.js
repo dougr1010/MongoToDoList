@@ -10,6 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 var mongoose = require('mongoose');
 var mongoURI = "mongodb://localhost:27017/toDo";
 var MongoDB = mongoose.connect(mongoURI).connection;
+
 MongoDB.on('error', function (err) {
     console.log('mongodb connection error:', err);
 });
@@ -24,8 +25,6 @@ var toDo = require('./routes/toDo');
 app.use('/toDo', toDo);
 
 app.use(express.static(path.join(__dirname, 'public')));
-
-
 
 var server = app.listen(3000, function(){
     var port = server.address().port;
